@@ -8,8 +8,30 @@ public class WarriorData : CharacterData {
 
 	[SerializeField]
 	private WarriorClassType classType;
+    public WarriorClassType ClassType
+    {
+        get
+        {
+            return this.classType;
+        }
+        set
+        {
+            this.classType = value;
+        }
+    }
 
 	[SerializeField]
 	private WarriorWpnType wpnType;
+    public WarriorWpnType WpnType
+    {
+        get
+        {
+            return this.wpnType;
+        }
+        set
+        {
+            this.wpnType = value;
+        }
+    }
 	
 }

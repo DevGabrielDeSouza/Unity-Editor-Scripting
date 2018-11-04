@@ -8,8 +8,30 @@ public class RogueData : CharacterData {
 
 	[SerializeField]
 	private RogueStrategyType strategyType;
+    public RogueStrategyType StrategyType
+    {
+        get
+        {
+            return this.strategyType;
+        }
+        set
+        {
+            this.strategyType = value;
+        }
+    }
 
 	[SerializeField]
 	private RogueWpnType wpnType;
+    public RogueWpnType WpnType
+    {
+        get
+        {
+            return this.wpnType;
+        }
+        set
+        {
+            this.wpnType = value;
+        }
+    }
 	
 }
