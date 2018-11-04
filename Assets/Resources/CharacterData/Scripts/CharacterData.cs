@@ -25,6 +25,6 @@ public class CharacterData : ScriptableObject {
     public float Power { get; set; }
 
     [SerializeField]
-    private new float name;
-    public float Name { get; set; }
+    private new string name;
+    public string Name { get; set; }
 }

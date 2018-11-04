@@ -308,6 +308,14 @@ public class GeneralSettings : EditorWindow{
         GUILayout.Label("% Crit Chance: ");
         charData.CritChance = EditorGUILayout.Slider(charData.CritChance, 0, charData.Power);
         EditorGUILayout.EndHorizontal();
+        
+        
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Name: ");
+        charData.Name = EditorGUILayout.TextField(charData.Name);
+        EditorGUILayout.EndHorizontal();
+
+
 
     }
 }
