@@ -180,6 +180,10 @@ public class EnemyDesignerWindow : EditorWindow {
         mageData.WpnType = (MageWpnType)EditorGUILayout.EnumPopup(mageData.WpnType);
         EditorGUILayout.EndHorizontal();
 
+        if(GUILayout.Button("Create!", GUILayout.Height(40))){
+            GeneralSettings.OpenWindow(GeneralSettings.SettingsType.MAGE);
+        }
+
         GUILayout.EndArea();
     }
 
@@ -227,5 +231,27 @@ public class EnemyDesignerWindow : EditorWindow {
         EditorGUILayout.EndHorizontal();
 
         GUILayout.EndArea();
+    }
+}
+
+
+public class GeneralSettings : EditorWindow{
+    public enum SettingsType{
+        MAGE,
+        WARRIOR,
+        ROGUE
+    }
+
+
+    static SettingsType dataSettings;
+
+    static GeneralSettings window;
+
+
+    public static void OpenWindow(SettingsType setting){
+        dataSettings = setting;
+        window = (GeneralSettings)GetWindow(typeof(GeneralSettings));
+        window.minSize = new Vector2(250, 200);
+        window.Show();
     }
 }
