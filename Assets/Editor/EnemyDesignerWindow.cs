@@ -67,6 +67,9 @@ public class EnemyDesignerWindow : EditorWindow {
     {
 		DrawLayouts();
 		DrawHeader();
+        DrawMageSettings();
+        DrawWarriorSettings();
+        DrawRogueSettings();
     }
 
 
@@ -82,30 +85,31 @@ public class EnemyDesignerWindow : EditorWindow {
 
 
         mageSection.x = 0;
-        mageSection.y = position.height;
+        mageSection.y = 50;
         mageSection.width = position.width / 3;
         mageSection.height = position.height - 50;
-        mageSection.height = (position.height - 50) * -1;
 
 
         warriorSection.x = position.width / 3;
-        warriorSection.y = position.height;
+        warriorSection.y = 50;
         warriorSection.width = position.width / 3;
         warriorSection.height = position.height - 50;
-        warriorSection.height = (position.height - 50) * -1;
 
 
         rogueSection.x = (position.width / 3) * 2;
-        rogueSection.y = position.height;
+        rogueSection.y = 50;
         rogueSection.width = position.width / 3;
         rogueSection.height = position.height - 50;
-        rogueSection.height = (position.height - 50) * -1;
 
 
         GUI.DrawTexture(headerSection, headerSectionTexture);
-        GUI.DrawTexture(mageSection, mageSectionTexture);
-        GUI.DrawTexture(warriorSection, warriorSectionTexture);
-        GUI.DrawTexture(rogueSection, rogueSectionTexture);
+
+        //GUI.DrawTexture(mageSection, mageSectionTexture);
+        GUI.DrawTextureWithTexCoords(mageSection, mageSectionTexture, new Rect(0, 1, 1, -1));
+        //GUI.DrawTexture(warriorSection, warriorSectionTexture);
+        GUI.DrawTextureWithTexCoords(warriorSection, warriorSectionTexture, new Rect(0, 1, 1, -1));
+        //GUI.DrawTexture(rogueSection, rogueSectionTexture);
+        GUI.DrawTextureWithTexCoords(rogueSection, rogueSectionTexture, new Rect(0, 1, 1, -1));
     }
 
 
@@ -127,7 +131,11 @@ public class EnemyDesignerWindow : EditorWindow {
     /// </summary>
     void DrawMageSettings()
     {
-        
+        GUILayout.BeginArea(mageSection);
+
+        GUILayout.Label("Mage");
+
+        GUILayout.EndArea();
     }
 
 
@@ -136,15 +144,23 @@ public class EnemyDesignerWindow : EditorWindow {
     /// </summary>
     void DrawWarriorSettings()
     {
+        GUILayout.BeginArea(warriorSection);
 
+        GUILayout.Label("Warrior");
+
+        GUILayout.EndArea();
     }
 
 
     /// <summary>
     /// Draw contents of rogue region
     /// </summary>
-    void DrawSettings()
+    void DrawRogueSettings()
     {
-        
+        GUILayout.BeginArea(rogueSection);
+
+        GUILayout.Label("Rogue");
+
+        GUILayout.EndArea();
     }
 }
