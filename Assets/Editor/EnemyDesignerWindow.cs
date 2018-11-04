@@ -6,16 +6,18 @@ using UnityEditor;
 public class EnemyDesignerWindow : EditorWindow {
 
     Texture2D headerSectionTexture;
-    Texture2D leftSectionTexture;
-    Texture2D rightSectionTexture;
+    Texture2D mageSectionTexture;
+    Texture2D warriorSectionTexture;
+    Texture2D rogueSectionTexture;
 
     Color headerSectionColor = new Color(13f/255f, 32f/255f, 44f/255f, 1f);
     
 	//Color headerSectionColor;
 
     Rect headerSection;
-    Rect leftSection;
-    Rect rightSection;
+    Rect mageSection;
+    Rect warriorSection;
+    Rect rogueSection;
 
 	[MenuItem("Window/Enemy Designer")]
 	static void OpenWindow(){
@@ -49,11 +51,11 @@ public class EnemyDesignerWindow : EditorWindow {
 		headerSectionTexture.SetPixel(0,0, headerSectionColor);
 		headerSectionTexture.Apply();
 
-        leftSectionTexture = Resources.Load<Texture2D>("Graphics/Interface/redBG");
+        mageSectionTexture = Resources.Load<Texture2D>("Graphics/Interface/yellowBG");
 
-        rightSectionTexture = Resources.Load<Texture2D>("Graphics/Interface/greenBG");
+        warriorSectionTexture = Resources.Load<Texture2D>("Graphics/Interface/redBG");
 
-        //rightSectionTexture.Resize
+        rogueSectionTexture = Resources.Load<Texture2D>("Graphics/Interface/greenBG");
     }
 
 
@@ -79,20 +81,31 @@ public class EnemyDesignerWindow : EditorWindow {
         headerSection.height = 50;
 
 
-        leftSection.x = 0;
-        leftSection.y = 50;
-        leftSection.width = position.width / 2;
-        leftSection.height = position.height - 50;
+        mageSection.x = 0;
+        mageSection.y = position.height;
+        mageSection.width = position.width / 3;
+        mageSection.height = position.height - 50;
+        mageSection.height = (position.height - 50) * -1;
 
 
-        rightSection.x = position.width / 2;
-        rightSection.y = position.height;
-        rightSection.width = position.width / 2;
-        rightSection.height = (position.height - 50) * -1;
+        warriorSection.x = position.width / 3;
+        warriorSection.y = position.height;
+        warriorSection.width = position.width / 3;
+        warriorSection.height = position.height - 50;
+        warriorSection.height = (position.height - 50) * -1;
+
+
+        rogueSection.x = (position.width / 3) * 2;
+        rogueSection.y = position.height;
+        rogueSection.width = position.width / 3;
+        rogueSection.height = position.height - 50;
+        rogueSection.height = (position.height - 50) * -1;
+
 
         GUI.DrawTexture(headerSection, headerSectionTexture);
-        GUI.DrawTexture(leftSection, leftSectionTexture);
-        GUI.DrawTexture(rightSection, rightSectionTexture);
+        GUI.DrawTexture(mageSection, mageSectionTexture);
+        GUI.DrawTexture(warriorSection, warriorSectionTexture);
+        GUI.DrawTexture(rogueSection, rogueSectionTexture);
     }
 
 
@@ -101,14 +114,37 @@ public class EnemyDesignerWindow : EditorWindow {
     /// </summary>
     void DrawHeader()
     {
-		GUILayout.BeginArea(headerSection);
+        GUILayout.BeginArea(headerSection);
 
-		GUILayout.Label("Enemy Designer");
+        GUILayout.Label("Enemy Designer");
 
-		GUILayout.EndArea();
+        GUILayout.EndArea();
     }
 
 
-	
+    /// <summary>
+    /// Draw contents of mage region
+    /// </summary>
+    void DrawMageSettings()
+    {
+        
+    }
 
+
+    /// <summary>
+    /// Draw contents of warrior region
+    /// </summary>
+    void DrawWarriorSettings()
+    {
+
+    }
+
+
+    /// <summary>
+    /// Draw contents of rogue region
+    /// </summary>
+    void DrawSettings()
+    {
+        
+    }
 }
