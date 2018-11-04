@@ -321,7 +321,19 @@ public class GeneralSettings : EditorWindow{
         charData.Name = EditorGUILayout.TextField(charData.Name);
         EditorGUILayout.EndHorizontal();
 
+        if(charData.Prefab == null){
+            EditorGUILayout.HelpBox("This enemy needs a [Prefab] before it can be created.", MessageType.Warning);
+        }else if(charData.Name == null || charData.Name.Length < 1){
+            EditorGUILayout.HelpBox("This enemy needs a [Name] before it can be created.", MessageType.Warning);
+        }else if(GUILayout.Button("Finish and Save", GUILayout.Height(30))){
+            SaveCharacterData();
+            window.Close();
+        }
 
+    }
+
+    void SaveCharacterData()
+    {
 
     }
 }
