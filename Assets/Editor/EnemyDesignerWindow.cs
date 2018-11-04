@@ -207,6 +207,11 @@ public class EnemyDesignerWindow : EditorWindow {
         warriorData.WpnType = (WarriorWpnType)EditorGUILayout.EnumPopup(warriorData.WpnType);
         EditorGUILayout.EndHorizontal();
 
+        if (GUILayout.Button("Create!", GUILayout.Height(40)))
+        {
+            GeneralSettings.OpenWindow(GeneralSettings.SettingsType.MAGE);
+        }
+
         GUILayout.EndArea();
     }
 
@@ -229,6 +234,11 @@ public class EnemyDesignerWindow : EditorWindow {
         GUILayout.Label("Weapon: ");
         rogueData.WpnType = (RogueWpnType)EditorGUILayout.EnumPopup(rogueData.WpnType);
         EditorGUILayout.EndHorizontal();
+
+        if (GUILayout.Button("Create!", GUILayout.Height(40)))
+        {
+            GeneralSettings.OpenWindow(GeneralSettings.SettingsType.MAGE);
+        }
 
         GUILayout.EndArea();
     }
@@ -253,5 +263,39 @@ public class GeneralSettings : EditorWindow{
         window = (GeneralSettings)GetWindow(typeof(GeneralSettings));
         window.minSize = new Vector2(250, 200);
         window.Show();
+    }
+
+    /// <summary>
+    /// OnGUI is called for rendering and handling GUI events.
+    /// This function can be called multiple times per frame (one call per event).
+    /// </summary>
+    void OnGUI()
+    {
+        switch (dataSettings)
+        {
+            case SettingsType.MAGE:
+                DrawSettings((CharacterData)EnemyDesignerWindow.MageInfo);
+                break;
+            case SettingsType.WARRIOR:
+                DrawSettings((CharacterData)EnemyDesignerWindow.WarriorInfo);
+                break;
+            case SettingsType.ROGUE:
+                DrawSettings((CharacterData)EnemyDesignerWindow.RogueInfo);
+                break;
+        }
+    }
+
+    void DrawSettings(CharacterData charData){
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Max Health: ");
+        charData.MaxHealth = EditorGUILayout.FloatField(charData.MaxHealth);
+        EditorGUILayout.EndHorizontal();
+
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Max Energy: ");
+        charData.MaxEnergy = EditorGUILayout.FloatField(charData.MaxEnergy);
+        EditorGUILayout.EndHorizontal();
+
     }
 }
