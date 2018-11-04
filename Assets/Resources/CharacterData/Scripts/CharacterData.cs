@@ -18,11 +18,11 @@ public class CharacterData : ScriptableObject {
     
     [SerializeField]
     private float critChance;
-    private float CritChance { get; set; }
+    public float CritChance { get; set; }
 
     [SerializeField]
     private float power;
-    private float Power { get; set; }
+    public float Power { get; set; }
 
     [SerializeField]
     private new float name;
