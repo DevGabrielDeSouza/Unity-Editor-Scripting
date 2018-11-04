@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterData : ScriptableObject {
 	[SerializeField]
 	private GameObject prefab;
+    public GameObject Prefab { get; set; }
 
     [SerializeField]
     private float maxHealth;
