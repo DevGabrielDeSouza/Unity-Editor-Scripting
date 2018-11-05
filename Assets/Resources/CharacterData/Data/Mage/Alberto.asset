@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d760a3b2468a9e44b162774ba266669, type: 3}
+  m_Name: Alberto
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1939488609883216, guid: 9990527ff36f0a441952e00b22c64293, type: 2}
+  maxHealth: 500
+  maxEnergy: 300
+  critChance: 30
+  power: 70
+  name: Alberto
+  dmgType: 1
+  wpnType: 1
