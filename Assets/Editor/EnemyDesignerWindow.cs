@@ -21,6 +21,9 @@ public class EnemyDesignerWindow : EditorWindow {
     Rect rogueSection;
 
 
+    GUISkin skin;
+
+
     private static MageData mageData;
     public static MageData MageInfo{
         get{
@@ -49,7 +52,8 @@ public class EnemyDesignerWindow : EditorWindow {
 	[MenuItem("Window/Enemy Designer")]
 	static void OpenWindow(){
 		EnemyDesignerWindow window = (EnemyDesignerWindow)GetWindow(typeof (EnemyDesignerWindow));
-		window.minSize = new Vector2(600, 300);
+		window.minSize = new Vector2(600, 200);
+        window.maxSize = new Vector2(600, 200);
 		window.Show();
 	}
 
@@ -60,6 +64,7 @@ public class EnemyDesignerWindow : EditorWindow {
 	{
 		InitTextures();
         InitData();
+        skin = Resources.Load<GUISkin>("Graphics/StylesGUI/EnemyDesignerSkin");
 	}
 
 
@@ -155,7 +160,7 @@ public class EnemyDesignerWindow : EditorWindow {
     {
         GUILayout.BeginArea(headerSection);
 
-        GUILayout.Label("Enemy Designer");
+        GUILayout.Label("Enemy Designer", skin.GetStyle("Header1"));
 
         GUILayout.EndArea();
     }
@@ -168,19 +173,19 @@ public class EnemyDesignerWindow : EditorWindow {
     {
         GUILayout.BeginArea(mageSection);
 
-        GUILayout.Label("Mage");
+        GUILayout.Label("Mage", skin.GetStyle("MageHeader"));
 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Damage: ");
+        GUILayout.Label("Damage: ", skin.GetStyle("MageField"));
         mageData.DmgType = (MageDmgType)EditorGUILayout.EnumPopup(mageData.DmgType);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Weapon: ");
+        GUILayout.Label("Weapon: ", skin.GetStyle("MageField"));
         mageData.WpnType = (MageWpnType)EditorGUILayout.EnumPopup(mageData.WpnType);
         EditorGUILayout.EndHorizontal();
 
-        if(GUILayout.Button("Create!", GUILayout.Height(40))){
+        if(GUILayout.Button("Create!",skin.GetStyle("Button") ,GUILayout.Height(40))){
             GeneralSettings.OpenWindow(GeneralSettings.SettingsType.MAGE);
         }
 
@@ -195,19 +200,19 @@ public class EnemyDesignerWindow : EditorWindow {
     {
         GUILayout.BeginArea(warriorSection);
 
-        GUILayout.Label("Warrior");
+        GUILayout.Label("Warrior", skin.GetStyle("WarriorHeader"));
 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Damage: ");
+        GUILayout.Label("Damage: ", skin.GetStyle("WarriorField"));
         warriorData.ClassType = (WarriorClassType)EditorGUILayout.EnumPopup(warriorData.ClassType);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Weapon: ");
+        GUILayout.Label("Weapon: ", skin.GetStyle("WarriorField"));
         warriorData.WpnType = (WarriorWpnType)EditorGUILayout.EnumPopup(warriorData.WpnType);
         EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Create!", GUILayout.Height(40)))
+        if (GUILayout.Button("Create!", skin.GetStyle("Button"), GUILayout.Height(40)))
         {
             GeneralSettings.OpenWindow(GeneralSettings.SettingsType.WARRIOR);
         }
@@ -223,19 +228,19 @@ public class EnemyDesignerWindow : EditorWindow {
     {
         GUILayout.BeginArea(rogueSection);
 
-        GUILayout.Label("Rogue");
+        GUILayout.Label("Rogue", skin.GetStyle("RogueHeader"));
 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Damage: ");
+        GUILayout.Label("Damage: ", skin.GetStyle("RogueField"));
         rogueData.StrategyType = (RogueStrategyType)EditorGUILayout.EnumPopup(rogueData.StrategyType);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Weapon: ");
+        GUILayout.Label("Weapon: ", skin.GetStyle("RogueField"));
         rogueData.WpnType = (RogueWpnType)EditorGUILayout.EnumPopup(rogueData.WpnType);
         EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Create!", GUILayout.Height(40)))
+        if (GUILayout.Button("Create!", skin.GetStyle("Button"), GUILayout.Height(40)))
         {
             GeneralSettings.OpenWindow(GeneralSettings.SettingsType.ROGUE);
         }
